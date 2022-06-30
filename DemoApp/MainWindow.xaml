@@ -43,6 +43,28 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1"
+                    Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Vorname" Width="200"/>
+                <TextBox Name="txb_firstname" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Nachname" Width="200" />
+                <TextBox Name="txb_lastname" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Alter" Width="200"/>
+                <TextBox Name="txb_age" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="E-Mail" Width="200"/>
+                <TextBox Name="txb_email" Width="200"/>
+            </StackPanel>
+        </StackPanel>
+        
+
         <Grid Grid.Column="1"
               Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -51,7 +73,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="Speichern"
-                    Margin="50,10"/>
+                    Margin="50,10" Click="Button_Click"/>
             <Button Content="Reset"
                     Grid.Column="1"
                     Margin="50,10"/>
