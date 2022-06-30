@@ -1,0 +1,62 @@
+﻿<Window x:Class="DemoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoApp"
+        mc:Ignorable="d"
+        Title="Meine App" Height="450" Width="800">
+
+    <!--<Grid>
+        --><!-- Tolles Grid1 :D --><!--
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Button1" Grid.Row="2" Grid.Column="1"/>
+        <Button Content="Button2" Grid.Row="1" Grid.Column="0"/>
+        <Button Content="Button3"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"/>
+    </Grid>-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Speichern"
+                    Margin="50,10"/>
+            <Button Content="Reset"
+                    Grid.Column="1"
+                    Margin="50,10"/>
+        </Grid>
+        
+        
+    </Grid>
+</Window>
