@@ -23,10 +23,13 @@ namespace DemoApp
         public static List<Person> Persons = new List<Person>();
         public MainWindow()
         {
+            //List<Person> Persons = new List<Person>();
+            Persons.Add(new Person("Herbert", "Maier", "24", "twehrle@live.de"));
             InitializeComponent();
+            listview_persons.ItemsSource = Persons;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_save_click(object sender, RoutedEventArgs e)
         {
             string firstname = txb_firstname.Text;
             string lastname = txb_lastname.Text;
@@ -35,6 +38,14 @@ namespace DemoApp
 
             Person p1 = new Person(firstname, lastname, age, email);
             Persons.Add(p1);
+        }
+
+        private void btn_reset_click(object sender, RoutedEventArgs e)
+        {
+            txb_firstname.Text = "";
+            txb_lastname.Clear();
+            txb_age.Text = "";
+            txb_email.Text = "";
         }
     }
 
@@ -52,5 +63,10 @@ namespace DemoApp
         public string LastName { get; set; }
         public string Age { get; set; }
         public string Email { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name} {LastName}";
+        }
     }
 }

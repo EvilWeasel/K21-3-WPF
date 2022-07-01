@@ -43,6 +43,17 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
+        <!--<Grid.DataContext>
+            <Binding Source="local:MainWindow"/>
+        </Grid.DataContext>-->
+
+        <ListView Grid.Row="1"
+                  Name="listview_persons">
+
+        </ListView>
+        
+        
+        
         <StackPanel Grid.Column="1"
                     Grid.Row="1"
                     Orientation="Vertical">
@@ -73,10 +84,10 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="Speichern"
-                    Margin="50,10" Click="Button_Click"/>
+                    Margin="50,10" Click="btn_save_click"/>
             <Button Content="Reset"
                     Grid.Column="1"
-                    Margin="50,10"/>
+                    Margin="50,10" Click="btn_reset_click"/>
         </Grid>
         
         
