@@ -58,20 +58,28 @@
                     Grid.Row="1"
                     Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Vorname" Width="200"/>
-                <TextBox Name="txb_firstname" Width="200"/>
+                <Label Content="Vorname*" Width="200"/>
+                <TextBox Name="txb_firstname"
+                         Width="200"
+                         Text="{Binding ElementName=listview_persons, Path=SelectedItem.Name}" TextChanged="txb_firstname_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Nachname" Width="200" />
-                <TextBox Name="txb_lastname" Width="200"/>
+                <Label Content="Nachname*" Width="200" />
+                <TextBox Name="txb_lastname"
+                         Width="200"
+                         Text="{Binding ElementName=listview_persons, Path=SelectedItem.LastName}" TextChanged="txb_lastname_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Alter" Width="200"/>
-                <TextBox Name="txb_age" Width="200"/>
+                <TextBox Name="txb_age"
+                         Width="200"
+                         Text="{Binding ElementName=listview_persons, Path=SelectedItem.Age}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="E-Mail" Width="200"/>
-                <TextBox Name="txb_email" Width="200"/>
+                <TextBox Name="txb_email" 
+                         Width="200"
+                         Text="{Binding ElementName=listview_persons, Path=SelectedItem.Email}"/>
             </StackPanel>
         </StackPanel>
         
@@ -84,10 +92,14 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="Speichern"
-                    Margin="50,10" Click="btn_save_click"/>
-            <Button Content="Reset"
+                    Name="btn_save"
+                    Margin="50,10" 
+                    Click="btn_save_click"/>
+            <Button Content="Refresh"
+                    Name="btn_refresh"
                     Grid.Column="1"
-                    Margin="50,10" Click="btn_reset_click"/>
+                    Margin="50,10" 
+                    Click="btn_reset_click"/>
         </Grid>
         
         

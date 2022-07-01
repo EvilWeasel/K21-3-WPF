@@ -23,29 +23,58 @@ namespace DemoApp
         public static List<Person> Persons = new List<Person>();
         public MainWindow()
         {
-            //List<Person> Persons = new List<Person>();
             Persons.Add(new Person("Herbert", "Maier", "24", "twehrle@live.de"));
             InitializeComponent();
+            btn_save.IsEnabled = false;
             listview_persons.ItemsSource = Persons;
         }
 
         private void btn_save_click(object sender, RoutedEventArgs e)
         {
-            string firstname = txb_firstname.Text;
-            string lastname = txb_lastname.Text;
-            string age = txb_age.Text;
-            string email = txb_email.Text;
+            //listview_persons.UnselectAll();
+            //string firstname = txb_firstname.Text;
+            //string lastname = txb_lastname.Text;
+            //string age = txb_age.Text;
+            //string email = txb_email.Text;
 
-            Person p1 = new Person(firstname, lastname, age, email);
-            Persons.Add(p1);
+            if (listview_persons.SelectedItem == null &&
+                    txb_firstname.Text != String.Empty &&
+                    txb_lastname.Text != String.Empty)
+            {
+                Person p1 = new Person(txb_firstname.Text, txb_lastname.Text, txb_age.Text, txb_email.Text);
+                Persons.Add(p1);
+            }
+            listview_persons.Items.Refresh();
+            btn_reset_click(new Object(), new RoutedEventArgs());
         }
 
         private void btn_reset_click(object sender, RoutedEventArgs e)
         {
-            txb_firstname.Text = "";
+            listview_persons.UnselectAll();
+            // listview_persons.Items.Refresh();
+            txb_firstname.Clear();
             txb_lastname.Clear();
-            txb_age.Text = "";
-            txb_email.Text = "";
+            txb_age.Clear();
+            txb_email.Clear();
+        }
+
+        private void txb_firstname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ChangeButtonVisibility();
+        }
+
+        private void txb_lastname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ChangeButtonVisibility();
+        }
+        private void ChangeButtonVisibility()
+        {
+            if (txb_firstname.Text.Length > 0 &&
+                    txb_lastname.Text.Length > 0)
+            {
+                btn_save.IsEnabled = true;
+            }
+            else btn_save.IsEnabled = false;
         }
     }
 
@@ -57,6 +86,7 @@ namespace DemoApp
             LastName = lastName;
             Age = age;
             Email = email;
+
         }
 
         public string Name { get; set; }
