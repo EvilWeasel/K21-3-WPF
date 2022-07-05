@@ -32,6 +32,27 @@ namespace Gnop2
             _animate.Interval = TimeSpan.FromMilliseconds(16);
             _animate.Tick += _animateBall;
             _animate.Tick += _animatePaddles;
+            _animate.Tick += _checkCollision;
+        }
+
+        private void _checkCollision(object? sender, EventArgs e)
+        {
+            double x = Canvas.GetLeft(Ball);
+            double y = Canvas.GetTop(Ball);
+            // ball collision with left paddle
+            if (x <= LeftPaddle.ActualWidth &&
+                y >= Canvas.GetTop(LeftPaddle) &&
+                y + Ball.ActualHeight <= Canvas.GetTop(RightPaddle) + RightPaddle.ActualHeight)
+            {
+                directionRight = false;
+            }
+            // ball collision with right paddle
+            if (x + Ball.ActualWidth >= GameArea.ActualWidth - (Canvas.GetRight(RightPaddle) + RightPaddle.ActualWidth) &&
+                y + RightPaddle.ActualWidth >= Canvas.GetTop(RightPaddle) &&
+                y + Ball.ActualHeight <= Canvas.GetTop(RightPaddle) + RightPaddle.ActualHeight)
+            {
+                directionRight = true;
+            }
         }
 
         private void _animatePaddles(object? sender, EventArgs e)
@@ -63,22 +84,21 @@ namespace Gnop2
             // get current x position of ball
             double x = Canvas.GetLeft(Ball);
             double y = Canvas.GetTop(Ball);
-
             #region directionX
             // move ball on x
             if (directionRight) Canvas.SetLeft(Ball, x + ballVelocity);
             else Canvas.SetLeft(Ball, x - ballVelocity);
 
             // check if ball is outside x boundary area
-            if (x >= GameArea.ActualWidth - Ball.ActualWidth) directionRight = false;
-            else if (x <= 0) directionRight = true;
+            //if (x >= GameArea.ActualWidth - Ball.ActualWidth) directionRight = false;
+            //else if (x <= 0) directionRight = true;
             #endregion
 
             #region directionY
             // move ball on y
             if (directionBottom) Canvas.SetTop(Ball, y + ballVelocity);
             else Canvas.SetTop(Ball, y - ballVelocity);
-
+            
             // check if ball is outside y boundary area
             if (y >= GameArea.ActualHeight - Ball.ActualHeight) directionBottom = false;
             else if (y <= 0) directionBottom = true;
