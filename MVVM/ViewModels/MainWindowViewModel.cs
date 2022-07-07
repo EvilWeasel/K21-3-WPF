@@ -17,5 +17,9 @@ namespace MVVM.ViewModels
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        /// <summary>
+        /// Hier sollte initial darauf hingewiesen werden, dass wenn die Daten über das 
+        /// </summary>
+        public string FullName => $"{FirstName}, {MiddleName}, {LastName}";
     }
 }
