@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
         xmlns:vm="clr-namespace:MVVM.ViewModels"
+        xmlns:helper="clr-namespace:MVVM.Helper"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
     <Window.DataContext>
@@ -19,7 +20,11 @@
                  TextWrapping="Wrap"
                  Text="{Binding FullName, Mode=OneWay}" 
                  VerticalAlignment="Top" Width="192"/>
-
+        <Button Content="Clear"
+                HorizontalAlignment="Left" 
+                Margin="548,144,0,0" 
+                VerticalAlignment="Top" 
+                RenderTransformOrigin="-0.136,0.104" Command="{Binding ClearCommand}" />
 
     </Grid>
 </Window>

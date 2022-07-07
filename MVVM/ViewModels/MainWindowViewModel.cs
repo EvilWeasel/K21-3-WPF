@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,7 +20,17 @@ namespace MVVM.ViewModels
             FirstName = "Dave";
             MiddleName = "Hackerman";
             LastName = "Jones";
+            ClearCommand = new DelegateCommand(
+                (o) => !String.IsNullOrEmpty(FirstName) || 
+                    !String.IsNullOrEmpty(MiddleName) ||
+                    !String.IsNullOrEmpty(LastName),
+                (o) => { this.FirstName = ""; this.MiddleName = ""; this.LastName = ""; }
+            );
+
         }
+        // DelegateCommand usage
+        public DelegateCommand ClearCommand { get; set; }
+
         public string FirstName
         {
             get => firstName;
