@@ -40,7 +40,13 @@
                 HorizontalAlignment="Left"
                 Margin="468,250,0,0"
                 VerticalAlignment="Top"
-                Command=""/>
+                Command="{Binding ClearCommand}"/>
+        <Button Content="Kevin" 
+                HorizontalAlignment="Left" 
+                Margin="488,113,0,0" 
+                VerticalAlignment="Top"
+                Command="{Binding ChangeFirstName}"
+                CommandParameter="Kevin"/>
 
     </Grid>
 </Window>

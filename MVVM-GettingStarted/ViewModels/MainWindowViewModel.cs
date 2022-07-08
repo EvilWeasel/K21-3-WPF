@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM_GettingStarted.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace MVVM_GettingStarted.ViewModels
     internal class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+        public DelegateCommand ClearCommand { get; set; }
+        public DelegateCommand ChangeFirstName { get; set; }
         private string firstName;
         private string middleName;
         private string lastName;
@@ -29,6 +32,7 @@ namespace MVVM_GettingStarted.ViewModels
                     //RaisePropertyChanged("FirstName");
                     RaisePropertyChanged();
                     RaisePropertyChanged(nameof(FullName));
+                    ChangeFirstName?.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -81,7 +85,19 @@ namespace MVVM_GettingStarted.ViewModels
             //String x = "abc";
             // Python
             //x = "abc"
-            txb_firstname = "Anita";
+            // not working = txb_firstname = "Anita";
+
+
+            ClearCommand = new DelegateCommand(
+                (o) => !String.IsNullOrEmpty(FirstName) ||
+                    !String.IsNullOrEmpty(MiddleName) ||
+                    !String.IsNullOrEmpty(LastName),
+                (o) => { this.FirstName = ""; this.MiddleName = ""; this.LastName = ""; }
+                );
+            ChangeFirstName = new DelegateCommand(
+                (o) => String.IsNullOrEmpty(FirstName),
+                (o) => this.FirstName = o.ToString()
+                ); ;
         }
 
     }
